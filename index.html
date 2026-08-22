@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohammed Amaan Hashmi| Test Automation Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #020403;
+    --panel: #050807;
+    --line: rgba(0, 255, 102, 0.18);
+    --line-soft: rgba(255, 255, 255, 0.09);
+    --text: #f3fff7;
+    --muted: #93b69f;
+    --green: #00ff66;
+    --green-soft: rgba(0, 255, 102, 0.11);
+    --red: #ff4545;
+    --shadow: 0 0 42px rgba(0, 255, 102, 0.16);
+    --mono: "JetBrains Mono", "Cascadia Mono", Consolas, monospace;
+    --sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background:
+      linear-gradient(rgba(0, 255, 102, 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 102, 0.045) 1px, transparent 1px),
+      radial-gradient(circle at 15% 10%, rgba(0, 255, 102, 0.08), transparent 25%),
+      var(--bg);
+    background-size: 180px 180px, 180px 180px, auto, auto;
+    color: var(--text);
+    font-family: var(--mono);
+    line-height: 1.65;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(to bottom, rgba(255,255,255,0.012), rgba(255,255,255,0.012) 1px, transparent 1px, transparent 4px);
+    opacity: 0.12;
+    z-index: 100;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  .wrap { width: min(1400px, calc(100% - 64px)); margin: 0 auto; }
+
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 1px solid var(--line);
+    background: rgba(2, 4, 3, 0.86);
+    backdrop-filter: blur(14px);
+  }
+
+  .nav-inner {
+    min-height: 66px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+  }
+
+  .brand {
+    color: var(--green);
+    font-size: 14px;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    color: var(--green);
+    font-size: 12px;
+  }
+
+  .nav-links a { opacity: 0.86; }
+  .nav-links a:hover { opacity: 1; text-shadow: 0 0 12px rgba(0, 255, 102, 0.7); }
+  .nav-actions { display: flex; gap: 10px; }
+
+  .icon-link {
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    display: inline-grid;
+    place-items: center;
+    color: var(--green);
+    background: var(--green-soft);
+    font-size: 11px;
+    font-weight: 800;
+  }
+
+  .icon-link:hover { border-color: var(--green); box-shadow: var(--shadow); }
+
+  .hero {
+    min-height: calc(100vh - 66px);
+    display: grid;
+    align-items: center;
+    padding: 66px 0 74px;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr) 360px;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .portrait-shell {
+    display: grid;
+    justify-items: center;
+    gap: 24px;
+  }
+
+  .portrait {
+    width: clamp(220px, 22vw, 260px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    padding: 8px;
+    border: 3px solid var(--green);
+    background: #eaffef;
+    box-shadow: 0 0 0 10px rgba(0,255,102,0.07), 0 0 46px rgba(0,255,102,0.3);
+    overflow: hidden;
+  }
+
+  .portrait img,
+  .mini-profile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 20%;
+    display: block;
+  }
+
+  .portrait img { border-radius: 50%; }
+
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--green);
+    border: 1px solid var(--line);
+    background: rgba(0,0,0,0.45);
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+  }
+
+  .status-pill::before {
+    content: "";
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 16px var(--green);
+  }
+
+  .eyebrow {
+    color: var(--green);
+    font-family: var(--mono);
+    font-weight: 700;
+    font-style: normal;
+    margin-bottom: 4px;
+    font-size: clamp(20px, 2.6vw, 30px);
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 22px rgba(0, 255, 102, 0.22);
+  }
+
+  .title {
+    margin: 0 0 22px;
+    color: var(--green);
+    font-family: var(--mono);
+    font-weight: 800;
+    font-style: normal;
+    font-size: clamp(20px, 2.6vw, 30px);
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 30px rgba(0, 255, 102, 0.28);
+  }
+
+  .role {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+    margin: 4px 0 24px;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: clamp(16px, 1.6vw, 19px);
+    line-height: 1.3;
+    padding: 9px 18px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(0, 255, 102, 0.06);
+    letter-spacing: 0.2px;
+  }
+
+  .role::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 12px var(--green);
+    flex: none;
+  }
+
+  .summary {
+    margin: 0 0 30px;
+    max-width: 720px;
+    color: var(--muted);
+    font-family: var(--sans);
+    font-size: 15.5px;
+    line-height: 1.75;
+    padding: 20px 22px;
+    border-left: 2px solid var(--line);
+    background: linear-gradient(90deg, rgba(0,255,102,0.045), transparent 70%);
+  }
+
+  .summary strong { color: var(--green); font-weight: 700; }
+
+  .button-row,
+  .social-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .button-row { margin-bottom: 22px; }
+
+  .btn {
+    min-height: 46px;
+    border-radius: 7px;
+    padding: 12px 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--green);
+    color: var(--green);
+    background: rgba(0, 255, 102, 0.045);
+    font-size: 13px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+  }
+
+  .btn:hover { box-shadow: var(--shadow); transform: translateY(-1px); }
+  .btn-primary { background: var(--green); color: #001f0b; }
+  .btn-danger { border-color: var(--red); background: var(--red); color: #fff; }
+
+  .location {
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+    color: var(--green);
+    font-size: 12px;
+  }
+
+  .terminal {
+    border: 1px solid rgba(255, 255, 255, 0.36);
+    border-radius: 8px;
+    background: rgba(1, 3, 2, 0.88);
+    box-shadow: 0 22px 80px rgba(0,0,0,0.55), var(--shadow);
+    overflow: hidden;
+  }
+
+  .terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .red { background: #ff5f56; }
+  .yellow { background: #ffbd2e; }
+  .green { background: #27c93f; }
+
+  .terminal-title {
+    margin-left: auto;
+    color: var(--green);
+    font-size: 11px;
+  }
+
+  .terminal-body {
+    padding: 17px 18px 20px;
+    color: var(--green);
+    font-size: 12px;
+  }
+
+  .terminal-body p { margin: 0 0 10px; }
+  .terminal-body .ok { color: var(--text); }
+
+  .cursor {
+    display: inline-block;
+    width: 9px;
+    height: 16px;
+    background: var(--green);
+    vertical-align: -3px;
+    animation: blink 1s steps(2, start) infinite;
+  }
+
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .scroll-marker {
+    width: 22px;
+    height: 40px;
+    border: 2px solid var(--text);
+    border-radius: 999px;
+    margin: 44px auto 0;
+    position: relative;
+    opacity: 0.82;
+  }
+
+  .scroll-marker::after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    width: 4px;
+    height: 9px;
+    border-radius: 99px;
+    background: var(--green);
+    transform: translateX(-50%);
+    animation: drop 1.4s ease-in-out infinite;
+  }
+
+  @keyframes drop {
+    0% { transform: translate(-50%, 0); opacity: 1; }
+    100% { transform: translate(-50%, 12px); opacity: 0; }
+  }
+
+  section { padding: 86px 0; }
+
+  .section-kicker {
+    text-align: center;
+    color: var(--green);
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    margin: 0 0 42px;
+    text-align: center;
+    color: var(--green);
+    font-size: clamp(30px, 4vw, 44px);
+    line-height: 1.08;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 34px;
+    align-items: start;
+  }
+
+  .profile-card,
+  .info-card,
+  .metric-card,
+  .skill-card,
+  .contact-card {
+    border: 1px solid var(--line);
+    background: rgba(0, 0, 0, 0.38);
+    border-radius: 8px;
+  }
+
+  .profile-card { padding: 28px; }
+
+  .mini-profile {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 22px;
+  }
+
+  .mini-profile img {
+    width: 112px;
+    height: 112px;
+    border: 3px solid var(--green);
+    border-radius: 50%;
+    background: #eaffef;
+    box-shadow: 0 0 32px rgba(0,255,102,0.28);
+  }
+
+  .mini-profile h2 {
+    margin: 0 0 4px;
+    color: var(--text);
+    font-size: 22px;
+    line-height: 1.2;
+  }
+
+  .mini-profile p,
+  .profile-card > p {
+    color: var(--green);
+    font-family: var(--sans);
+    font-size: 14px;
+    margin: 0;
+  }
+
+  .profile-card > p + p { margin-top: 16px; }
+
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 26px;
+  }
+
+  .metric-card {
+    min-height: 112px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 16px;
+  }
+
+  .metric-card strong {
+    display: block;
+    color: var(--green);
+    font-size: 28px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .metric-card span { color: var(--green); font-size: 11px; }
+
+  .info-stack { display: grid; gap: 14px; }
+  .info-card { padding: 21px 22px; }
+
+  .info-card h3 {
+    margin: 0 0 8px;
+    color: var(--text);
+    font-size: 16px;
+  }
+
+  .info-card p {
+    margin: 0;
+    color: var(--green);
+    font-family: var(--sans);
+    font-size: 13px;
+  }
+
+  .timeline {
+    display: grid;
+    gap: 24px;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  .job {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.42);
+    padding: 28px;
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .job-meta { color: var(--green); font-size: 12px; }
+
+  .job-meta strong {
+    display: block;
+    color: var(--text);
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .job h3 {
+    margin: 0 0 14px;
+    color: var(--text);
+    font-size: 21px;
+  }
+
+  .job ul {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--green);
+    font-family: var(--sans);
+    font-size: 14px;
+  }
+
+  .job li + li { margin-top: 8px; }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  .tag {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 5px 10px;
+    color: var(--green);
+    background: var(--green-soft);
+    font-size: 11px;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .skill-card { padding: 22px; }
+
+  .skill-card h3 {
+    margin: 0 0 14px;
+    color: var(--text);
+    font-size: 15px;
+  }
+
+  .chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .chip {
+    border: 1px solid var(--line-soft);
+    border-radius: 6px;
+    color: var(--green);
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+
+  .hobby-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .hobby-card {
+    border: 1px solid var(--line);
+    background: rgba(0, 0, 0, 0.38);
+    border-radius: 8px;
+    padding: 22px;
+  }
+
+  .hobby-card .hobby-icon {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    background: var(--green-soft);
+    color: var(--green);
+    font-size: 17px;
+    margin-bottom: 14px;
+  }
+
+  .hobby-card h3 {
+    margin: 0 0 8px;
+    color: var(--text);
+    font-size: 15px;
+  }
+
+  .hobby-card p {
+    margin: 0;
+    color: var(--muted);
+    font-family: var(--sans);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .contact-card {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 42px;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+
+  .contact-card h2 {
+    color: var(--green);
+    font-size: clamp(28px, 4vw, 42px);
+    margin: 0 0 10px;
+  }
+
+  .contact-card p {
+    margin: 0 auto 24px;
+    color: var(--muted);
+    font-family: var(--sans);
+    max-width: 650px;
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    color: var(--green);
+    font-size: 12px;
+    padding: 28px 0;
+    text-align: center;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 650ms ease, transform 650ms ease;
+  }
+
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 1040px) {
+    .hero-grid { grid-template-columns: 230px minmax(0, 1fr); }
+    .terminal { grid-column: 1 / -1; max-width: 520px; justify-self: center; }
+  }
+
+  @media (max-width: 820px) {
+    .nav-inner { height: auto; padding: 12px 0; }
+    .nav-links { display: none; }
+    .hero-grid,
+    .about-grid,
+    .job,
+    .skills-grid { grid-template-columns: 1fr; }
+    .hobby-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hero,
+    .portrait-shell,
+    .hero-copy { text-align: center; }
+    .button-row,
+    .social-row,
+    .mini-profile { justify-content: center; }
+    .summary { margin-left: auto; margin-right: auto; }
+  }
+
+  @media (max-width: 560px) {
+    .wrap { width: min(100% - 28px, 1160px); }
+    .hero { padding-top: 42px; }
+    .nav-actions { display: none; }
+    .mini-profile { flex-direction: column; text-align: center; }
+    .metrics { grid-template-columns: 1fr; }
+    .profile-card,
+    .info-card,
+    .job,
+    .skill-card,
+    .contact-card { padding: 20px; }
+    .btn { width: 100%; }
+  }
+</style>
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#home">Mohammed Amaan Hashmi</a>
+      <div class="nav-links" aria-label="Primary navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#hobbies">Hobbies</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-actions" aria-label="Profile links">
+        <a class="icon-link" href="https://github.com/MohammedAmaanHashmi" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+        <a class="icon-link" href="https://www.linkedin.com/in/mohammed-amaan-hashmi-7b1019195/" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a>
+        <a class="icon-link" href="mailto:amaanhashmi25@gmail.com" aria-label="Email">ME</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="home">
+    <header class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="portrait-shell reveal">
+            <div class="portrait">
+              <img src="file_0000000036687207b5207adf69e9326f.png" alt="Mohammed Amaan Hashmi">
+            </div>
+            <div class="status-pill">Open to SDET opportunities</div>
+          </div>
+
+          <div class="hero-copy reveal">
+            <div class="eyebrow">Hi, I'm Mohammed Amaan</div>
+            <h1 class="title">Hashmi</h1>
+            <p class="role">Test Automation Engineer (SDET)</p>
+            <p class="summary">
+              <strong>5+ years</strong> in software quality assurance and test automation for
+              <strong>US Healthcare</strong> applications. I build scalable automation with
+              <strong>Playwright, TypeScript, Selenium WebDriver, Java, and Cucumber BDD</strong>.
+            </p>
+            <div class="button-row">
+              <a class="btn btn-primary" href="#contact">Get In Touch</a>
+              <a class="btn" href="#experience">View Experience</a>
+            </div>
+            <div class="social-row">
+              <a class="icon-link" href="https://www.linkedin.com/in/mohammed-amaan-hashmi-7b1019195/" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a>
+              <a class="icon-link" href="https://github.com/MohammedAmaanHashmi" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+              <a class="icon-link" href="mailto:amaanhashmi25@gmail.com" aria-label="Email">ME</a>
+              <span class="location">Mumbai, India</span>
+            </div>
+          </div>
+
+          <aside class="terminal reveal" aria-label="Automation terminal summary">
+            <div class="terminal-bar">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="terminal-title">amaan@sdet:~$</span>
+            </div>
+            <div class="terminal-body">
+              <p>npm install quality-engineering</p>
+              <p class="ok">Installing Playwright framework... done</p>
+              <p class="ok">Loading 400+ file suite... reviewed</p>
+              <p class="ok">Automating 200+ tests... complete</p>
+              <p class="ok">Regression effort reduced... 45%</p>
+              <p class="ok">Feedback time improved... 25%</p>
+              <p>run --domain=us-healthcare <span class="cursor"></span></p>
+            </div>
+          </aside>
+        </div>
+        <div class="scroll-marker" aria-hidden="true"></div>
+      </div>
+    </header>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-kicker reveal">Get to know me better</div>
+        <h2 class="section-title reveal">About Me</h2>
+        <div class="about-grid">
+          <article class="profile-card reveal">
+            <div class="mini-profile">
+              <img src="file_0000000036687207b5207adf69e9326f.png" alt="Mohammed Amaan Hashmi">
+              <div>
+                <h2>Mohammed Amaan Hashmi</h2>
+                <p>Test Automation Engineer / SDET</p>
+              </div>
+            </div>
+            <p>
+              I specialize in automation framework design, API testing, regression testing,
+              CI/CD, defect management, and Agile/Scrum delivery for healthcare product teams.
+            </p>
+            <p>
+              My recent work includes Playwright and TypeScript automation across a large test
+              framework, Selenium and Cucumber BDD regression suites, and reliable reporting
+              pipelines with Maven, TestNG, Jenkins, Docker, GitHub, and JIRA.
+            </p>
+            <div class="metrics">
+              <div class="metric-card"><strong>5+</strong><span>Years Experience</span></div>
+              <div class="metric-card"><strong>200+</strong><span>Tests Automated</span></div>
+              <div class="metric-card"><strong>45%</strong><span>Manual Regression Cut</span></div>
+              <div class="metric-card"><strong>25%</strong><span>Faster Test Feedback</span></div>
+            </div>
+          </article>
+
+          <div class="info-stack">
+            <article class="info-card reveal">
+              <h3>Automation Architecture</h3>
+              <p>Scalable Playwright, TypeScript, JavaScript, Selenium WebDriver, Java, Cucumber BDD, TestNG, Maven, and Gradle frameworks.</p>
+            </article>
+            <article class="info-card reveal">
+              <h3>Quality Strategy</h3>
+              <p>End-to-end, functional, regression, smoke, integration, cross-browser, API, REST API, and release validation coverage.</p>
+            </article>
+            <article class="info-card reveal">
+              <h3>DevOps Integration</h3>
+              <p>CI/CD workflows with Jenkins, Docker, Git, GitHub, Bitbucket, SourceTree, Postman, JIRA, and Confluence.</p>
+            </article>
+            <article class="info-card reveal">
+              <h3>AI-Assisted Engineering</h3>
+              <p>Uses GitHub Copilot, OpenAI Codex, Claude, Generative AI, prompt engineering, and MCP servers to speed up test generation and debugging.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <div class="section-kicker reveal">Professional journey</div>
+        <h2 class="section-title reveal">Experience</h2>
+        <div class="timeline">
+          <article class="job reveal">
+            <div class="job-meta">
+              <strong>eClinicalWorks</strong>
+              Mumbai, India<br>
+              Jan 2023 - Present<br>
+              US Healthcare
+            </div>
+            <div>
+              <h3>Test Automation Engineer (SDET)</h3>
+              <ul>
+                <li>Drive end-to-end automation for US Healthcare product suites using Playwright, TypeScript, and JavaScript.</li>
+                <li>Designed and implemented 200+ automated test cases across functional, regression, smoke, end-to-end, and cross-browser workflows.</li>
+                <li>Serve as primary pull request reviewer for a 400+ file Playwright test suite, improving consistency and maintainability.</li>
+                <li>Architected Java, Selenium WebDriver, and Cucumber BDD regression and compatibility automation backed by MySQL.</li>
+                <li>Reduced manual regression effort by up to 45%, regression cycle time by approximately 30%, and test feedback time by approximately 25%.</li>
+              </ul>
+              <div class="tag-row">
+                <span class="tag">Playwright</span><span class="tag">TypeScript</span><span class="tag">Selenium</span><span class="tag">Cucumber BDD</span><span class="tag">Jenkins</span><span class="tag">Docker</span><span class="tag">Postman</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="job reveal">
+            <div class="job-meta">
+              <strong>QualityKiosk Technologies</strong>
+              Mumbai, India<br>
+              Sep 2020 - Dec 2022<br>
+              Client Applications
+            </div>
+            <div>
+              <h3>Software Test Engineer</h3>
+              <ul>
+                <li>Developed reusable functional automation test cases using Java and Selenium WebDriver.</li>
+                <li>Executed functional, regression, smoke, and integration testing across SDLC stages.</li>
+                <li>Handled defect identification, analysis, reporting, verification, and release quality support.</li>
+                <li>Reported business-impact defects that improved prioritization and contributed to an approximately 20% reduction in production escalations.</li>
+              </ul>
+              <div class="tag-row">
+                <span class="tag">Java</span><span class="tag">Selenium WebDriver</span><span class="tag">Functional Testing</span><span class="tag">Regression Testing</span><span class="tag">SDLC</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-kicker reveal">Tools I work with</div>
+        <h2 class="section-title reveal">Technical Skills</h2>
+        <div class="skills-grid">
+          <article class="skill-card reveal">
+            <h3>Automation</h3>
+            <div class="chip-list">
+              <span class="chip">Playwright</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span><span class="chip">Selenium WebDriver</span><span class="chip">Java</span><span class="chip">Cucumber BDD</span><span class="chip">TestNG</span><span class="chip">Maven</span><span class="chip">Gradle</span>
+            </div>
+          </article>
+          <article class="skill-card reveal">
+            <h3>Testing</h3>
+            <div class="chip-list">
+              <span class="chip">Framework Design</span><span class="chip">E2E Testing</span><span class="chip">Functional Testing</span><span class="chip">Regression Testing</span><span class="chip">Smoke Testing</span><span class="chip">Integration Testing</span><span class="chip">Cross-Browser</span><span class="chip">API Testing</span><span class="chip">REST APIs</span>
+            </div>
+          </article>
+          <article class="skill-card reveal">
+            <h3>DevOps & Tools</h3>
+            <div class="chip-list">
+              <span class="chip">Jenkins</span><span class="chip">Docker</span><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Bitbucket</span><span class="chip">SourceTree</span><span class="chip">Postman</span><span class="chip">JIRA</span><span class="chip">Confluence</span>
+            </div>
+          </article>
+          <article class="skill-card reveal">
+            <h3>Database & Cloud</h3>
+            <div class="chip-list">
+              <span class="chip">MySQL</span><span class="chip">AWS</span><span class="chip">Continuous Integration</span>
+            </div>
+          </article>
+          <article class="skill-card reveal">
+            <h3>Practices</h3>
+            <div class="chip-list">
+              <span class="chip">Agile/Scrum</span><span class="chip">SDLC</span><span class="chip">STLC</span><span class="chip">Quality Assurance</span><span class="chip">Defect Management</span><span class="chip">Root Cause Analysis</span><span class="chip">Code Reviews</span>
+            </div>
+          </article>
+          <article class="skill-card reveal">
+            <h3>Certifications</h3>
+            <div class="chip-list">
+              <span class="chip">ISTQB CTFL</span><span class="chip">ISTQB Agile Tester</span><span class="chip">English</span><span class="chip">Hindi</span><span class="chip">Marathi</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="hobbies">
+      <div class="wrap">
+        <div class="section-kicker reveal">Beyond the code</div>
+        <h2 class="section-title reveal">Hobbies & Interests</h2>
+        <div class="hobby-grid">
+          <article class="hobby-card reveal">
+            <div class="hobby-icon">&#127909;</div>
+            <h3>Cinema & Movies</h3>
+            <p>Enjoy watching films across a broad range of genres, always up for exploring something new on screen.</p>
+          </article>
+          <article class="hobby-card reveal">
+            <div class="hobby-icon">&#127925;</div>
+            <h3>Music</h3>
+            <p>Listen to music regularly as a way to unwind and stay focused through long stretches of work.</p>
+          </article>
+          <article class="hobby-card reveal">
+            <div class="hobby-icon">&#128009;</div>
+            <h3>Anime</h3>
+            <p>Follows anime series, with Dragon Ball among the favorites.</p>
+          </article>
+          <article class="hobby-card reveal">
+            <div class="hobby-icon">&#128250;</div>
+            <h3>K-Dramas & Reality TV</h3>
+            <p>Keeps up with K-dramas and reality TV shows for a mix of storytelling and unscripted entertainment.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <article class="contact-card reveal">
+          <h2>Let's build reliable automation</h2>
+          <p>
+            Open to Test Automation Engineer and SDET opportunities focused on scalable frameworks,
+            CI feedback, healthcare workflows, and high-confidence releases.
+          </p>
+          <div class="button-row" style="justify-content:center;margin-bottom:0">
+            <a class="btn btn-primary" href="mailto:amaanhashmi25@gmail.com">Email Me</a>
+            <a class="btn" href="tel:+919867821170">Call</a>
+            <a class="btn" href="https://www.linkedin.com/in/mohammed-amaan-hashmi-7b1019195/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn" href="https://github.com/MohammedAmaanHashmi" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Mumbai, India | amaanhashmi25@gmail.com | +91 98678 21170
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+  </script>
+</body>
+</html>
