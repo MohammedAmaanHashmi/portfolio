@@ -343,21 +343,37 @@
     100% { transform: translate(-50%, 12px); opacity: 0; }
   }
 
-  section { padding: 86px 0; }
+  section { padding: 100px 0; }
 
   .section-kicker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
     text-align: center;
     color: var(--green);
     font-size: 13px;
-    margin-bottom: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .section-kicker::before,
+  .section-kicker::after {
+    content: "";
+    width: 34px;
+    height: 1px;
+    background: var(--line);
   }
 
   .section-title {
-    margin: 0 0 42px;
+    margin: 0 0 48px;
     text-align: center;
     color: var(--green);
-    font-size: clamp(30px, 4vw, 44px);
+    font-size: clamp(30px, 4vw, 46px);
     line-height: 1.08;
+    text-shadow: 0 0 30px rgba(0,255,102,0.2);
   }
 
   .about-grid {
@@ -374,7 +390,16 @@
   .contact-card {
     border: 1px solid var(--line);
     background: rgba(0, 0, 0, 0.38);
-    border-radius: 8px;
+    border-radius: 10px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  .info-card:hover,
+  .metric-card:hover,
+  .skill-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(0, 255, 102, 0.4);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.38), 0 0 26px rgba(0,255,102,0.1);
   }
 
   .profile-card { padding: 28px; }
@@ -456,18 +481,37 @@
   .timeline {
     display: grid;
     gap: 24px;
-    max-width: 980px;
+    max-width: 1200px;
     margin: 0 auto;
   }
 
   .job {
     border: 1px solid var(--line);
-    border-radius: 8px;
+    border-radius: 10px;
     background: rgba(0, 0, 0, 0.42);
-    padding: 28px;
+    padding: 34px;
     display: grid;
-    grid-template-columns: 220px minmax(0, 1fr);
-    gap: 28px;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 34px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  .job::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--green);
+    box-shadow: 0 0 16px var(--green);
+  }
+
+  .job:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 46px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--line), 0 0 32px rgba(0,255,102,0.12);
   }
 
   .job-meta { color: var(--green); font-size: 12px; }
@@ -480,9 +524,10 @@
   }
 
   .job h3 {
-    margin: 0 0 14px;
+    margin: 0 0 16px;
     color: var(--text);
-    font-size: 21px;
+    font-size: 22px;
+    font-weight: 800;
   }
 
   .job ul {
@@ -505,11 +550,15 @@
   .tag {
     border: 1px solid var(--line);
     border-radius: 999px;
-    padding: 5px 10px;
+    padding: 6px 12px;
     color: var(--green);
     background: var(--green-soft);
     font-size: 11px;
+    font-weight: 600;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
+
+  .tag:hover { border-color: var(--green); box-shadow: 0 0 12px rgba(0,255,102,0.25); }
 
   .skills-grid {
     display: grid;
@@ -548,8 +597,15 @@
   .hobby-card {
     border: 1px solid var(--line);
     background: rgba(0, 0, 0, 0.38);
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 22px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  .hobby-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(0, 255, 102, 0.4);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.38), 0 0 26px rgba(0,255,102,0.1);
   }
 
   .hobby-card .hobby-icon {
@@ -579,11 +635,21 @@
   }
 
   .contact-card {
-    max-width: 850px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 42px;
+    padding: 48px;
     text-align: center;
     box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(0,255,102,0.08), transparent 60%);
+    pointer-events: none;
   }
 
   .contact-card h2 {
