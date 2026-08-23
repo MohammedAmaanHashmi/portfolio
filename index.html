@@ -3,7 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mohammed Amaan Hashmi| Test Automation Engineer</title>
+<title>Mohammed Amaan Hashmi | Test Automation Engineer (SDET)</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23020403'/%3E%3Crect x='3' y='3' width='58' height='58' rx='11' fill='none' stroke='%2300ff66' stroke-width='3'/%3E%3Ctext x='32' y='42' font-family='JetBrains Mono, monospace' font-size='24' font-weight='800' fill='%2300ff66' text-anchor='middle'%3EMH%3C/text%3E%3C/svg%3E">
+<meta name="description" content="Mohammed Amaan Hashmi — Test Automation Engineer (SDET) with 5+ years building Playwright/TypeScript automation for US Healthcare products at eClinicalWorks. 200+ tests automated, 45% less manual regression effort.">
+<meta property="og:title" content="Mohammed Amaan Hashmi | Test Automation Engineer (SDET)">
+<meta property="og:description" content="5+ years in test automation for US Healthcare. Playwright, TypeScript, Selenium, CI/CD. 200+ tests automated, 45% manual regression cut.">
+<meta property="og:image" content="https://raw.githubusercontent.com/MohammedAmaanHashmi/portfolio/main/profilepic.png">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,10 +20,12 @@
     --line: rgba(0, 255, 102, 0.18);
     --line-soft: rgba(255, 255, 255, 0.09);
     --text: #f3fff7;
-    --muted: #93b69f;
+    --muted: #a6c9b1;
     --green: #00ff66;
     --green-soft: rgba(0, 255, 102, 0.11);
     --red: #ff4545;
+    --cyan: #3fd9ff;
+    --cyan-soft: rgba(63, 217, 255, 0.11);
     --shadow: 0 0 42px rgba(0, 255, 102, 0.16);
     --mono: "JetBrains Mono", "Cascadia Mono", Consolas, monospace;
     --sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -82,6 +90,27 @@
     gap: 24px;
     color: var(--green);
     font-size: 12px;
+  }
+
+  .menu-toggle {
+    display: none;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--green);
+    border-radius: 8px;
+    background: var(--green-soft);
+    color: var(--green);
+    font-family: var(--mono);
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-menu {
+    display: none;
   }
 
   .nav-links a { opacity: 0.86; }
@@ -665,14 +694,6 @@
     max-width: 650px;
   }
 
-  footer {
-    border-top: 1px solid var(--line);
-    color: var(--green);
-    font-size: 12px;
-    padding: 28px 0;
-    text-align: center;
-  }
-
   .reveal {
     opacity: 0;
     transform: translateY(18px);
@@ -680,6 +701,414 @@
   }
 
   .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--green), var(--cyan));
+    box-shadow: 0 0 12px rgba(0,255,102,0.6);
+    z-index: 200;
+    transition: width 0.1s ease-out;
+  }
+
+  .brand-mark {
+    display: inline-grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--green);
+    border-radius: 7px;
+    background: var(--green-soft);
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 800;
+    margin-right: 10px;
+    box-shadow: 0 0 14px rgba(0,255,102,0.18);
+  }
+
+  .brand-row { display: inline-flex; align-items: center; }
+
+  .nav-links a {
+    position: relative;
+    padding: 4px 0;
+  }
+
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 100%;
+    bottom: -3px;
+    height: 2px;
+    background: var(--green);
+    box-shadow: 0 0 10px var(--green);
+    transition: right 0.25s ease;
+  }
+
+  .nav-links a:hover::after,
+  .nav-links a.active::after {
+    right: 0;
+  }
+
+  .nav-links a.active { opacity: 1; text-shadow: 0 0 12px rgba(0,255,102,0.7); }
+
+  .section-title {
+    background: linear-gradient(90deg, var(--green), var(--cyan) 130%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .profile-card,
+  .info-card,
+  .metric-card,
+  .skill-card,
+  .contact-card,
+  .job,
+  .achievement-card {
+    backdrop-filter: blur(6px);
+    box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+  }
+
+  .btn-primary {
+    gap: 8px;
+  }
+
+  .btn-primary::after {
+    content: "→";
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+
+  .btn-primary:hover::after {
+    transform: translateX(4px);
+  }
+
+  .back-to-top {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--green);
+    border-radius: 50%;
+    background: rgba(2,4,3,0.85);
+    color: var(--green);
+    box-shadow: 0 0 20px rgba(0,255,102,0.25);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    z-index: 150;
+  }
+
+  .back-to-top.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .back-to-top:hover {
+    box-shadow: 0 0 28px rgba(0,255,102,0.5);
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 36px 0 28px;
+    text-align: center;
+  }
+
+  .footer-brand {
+    color: var(--green);
+    font-weight: 800;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .footer-meta {
+    color: var(--muted);
+    font-family: var(--sans);
+    font-size: 12px;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 16px 0;
+  }
+
+
+
+  .achievement-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .view-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--green);
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    border: 1px solid var(--line);
+    background: var(--green-soft);
+    padding: 6px 10px;
+    border-radius: 6px;
+    margin-top: 10px;
+  }
+
+  .view-link:hover {
+    border-color: var(--green);
+    box-shadow: var(--shadow);
+  }
+
+  .cert-links {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 12px;
+  }
+
+  .achievement-card {
+    position: relative;
+    border: 1px solid var(--line);
+    background: rgba(0, 0, 0, 0.38);
+    border-radius: 10px;
+    padding: 28px;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  .achievement-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--green);
+    box-shadow: 0 0 14px var(--green);
+  }
+
+  .achievement-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(0, 255, 102, 0.4);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.38), 0 0 26px rgba(0,255,102,0.1);
+  }
+
+  .achievement-number {
+    color: var(--green);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+    opacity: 0.8;
+  }
+
+  .achievement-card h3 {
+    margin: 0 0 12px;
+    color: var(--text);
+    font-size: 19px;
+    line-height: 1.35;
+  }
+
+  .achievement-card p {
+    margin: 0;
+    color: var(--muted);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .achievement-card strong {
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  .achievement-tag {
+    display: inline-flex;
+    margin-top: 18px;
+    padding: 5px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--green);
+    background: var(--green-soft);
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  .verified-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border: 1px solid var(--green);
+    border-radius: 999px;
+    color: var(--bg);
+    background: var(--green);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    box-shadow: 0 0 14px rgba(0,255,102,0.45);
+  }
+
+  #certifications {
+    background: var(--panel);
+    border-top: 1px solid var(--line-soft);
+    border-bottom: 1px solid var(--line-soft);
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .cert-card::before {
+    background: var(--cyan);
+    box-shadow: 0 0 14px var(--cyan);
+  }
+
+  .cert-card .achievement-tag {
+    color: var(--cyan);
+    background: var(--cyan-soft);
+    border-color: rgba(63, 217, 255, 0.35);
+  }
+
+  .cert-card .verified-badge {
+    border-color: var(--cyan);
+    background: var(--cyan);
+    box-shadow: 0 0 14px rgba(63,217,255,0.5);
+  }
+
+  .cert-card .view-link {
+    color: var(--cyan);
+    border-color: rgba(63, 217, 255, 0.35);
+    background: var(--cyan-soft);
+  }
+
+  .cert-card .view-link:hover {
+    border-color: var(--cyan);
+    box-shadow: 0 0 24px rgba(63,217,255,0.35);
+  }
+
+  .cert-card p strong {
+    color: var(--cyan);
+  }
+
+  .hobby-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .hobby-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--line);
+    background: rgba(0, 0, 0, 0.38);
+    border-radius: 999px;
+    padding: 10px 16px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .hobby-pill:hover {
+    transform: translateY(-2px);
+    border-color: rgba(0, 255, 102, 0.4);
+    box-shadow: 0 10px 26px rgba(0,0,0,0.35), 0 0 20px rgba(0,255,102,0.1);
+  }
+
+  .hobby-pill .hobby-icon {
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .hobby-pill span.label {
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .availability-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 18px 0 0;
+  }
+
+  .availability-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--line);
+    background: rgba(0,0,0,0.35);
+    border-radius: 999px;
+    padding: 8px 14px;
+    color: var(--muted);
+    font-family: var(--sans);
+    font-size: 12px;
+  }
+
+  .availability-pill strong {
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  .ai-highlight {
+    max-width: 1100px;
+    margin: 22px auto 0;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(0,255,102,0.07), rgba(0,0,0,0.4));
+    padding: 24px 28px;
+  }
+
+  .ai-highlight h3 {
+    margin: 0 0 8px;
+    color: var(--text);
+    font-size: 18px;
+  }
+
+  .ai-highlight p {
+    margin: 0;
+    color: var(--muted);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .ai-highlight strong {
+    color: var(--green);
+  }
+
+  @media (max-width: 820px) {
+    .achievement-grid {
+      grid-template-columns: 1fr;
+      max-width: 620px;
+    }
+
+    .achievement-card {
+      padding: 24px;
+    }
+
+    .ai-highlight {
+      padding: 22px;
+    }
+  }
 
   @media (max-width: 1040px) {
     .hero-grid { grid-template-columns: 230px minmax(0, 1fr); }
@@ -707,6 +1136,7 @@
     .wrap { width: min(100% - 28px, 1160px); }
     .hero { padding-top: 42px; }
     .nav-actions { display: none; }
+    .menu-toggle { display: inline-flex; }
     .mini-profile { flex-direction: column; text-align: center; }
     .metrics { grid-template-columns: 1fr; }
     .profile-card,
@@ -716,25 +1146,78 @@
     .contact-card { padding: 20px; }
     .btn { width: 100%; }
   }
+
+  @media (max-width: 820px) {
+    .mobile-menu {
+      position: fixed;
+      top: 66px;
+      left: 0;
+      right: 0;
+      z-index: 49;
+      display: none;
+      padding: 20px 28px 28px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(2, 4, 3, 0.97);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.45);
+    }
+
+    .mobile-menu.open {
+      display: block;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 15px 0;
+      color: var(--green);
+      font-size: 15px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mobile-menu a:last-child {
+      border-bottom: 0;
+    }
+
+    .mobile-menu a:hover {
+      text-shadow: 0 0 12px rgba(0, 255, 102, 0.7);
+    }
+  }
 </style>
 </head>
 <body>
+  <div class="scroll-progress" id="scrollProgress"></div>
   <nav class="site-nav">
     <div class="wrap nav-inner">
-      <a class="brand" href="#home">Mohammed Amaan Hashmi</a>
+      <a class="brand brand-row" href="#home"><span class="brand-mark">MH</span>Mohammed Amaan Hashmi</a>
       <div class="nav-links" aria-label="Primary navigation">
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
+        <a href="#certifications">Certifications</a>
         <a href="#hobbies">Hobbies</a>
         <a href="#contact">Contact</a>
       </div>
       <div class="nav-actions" aria-label="Profile links">
-        <a class="icon-link" href="https://github.com/MohammedAmaanHashmi" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
-        <a class="icon-link" href="https://www.linkedin.com/in/mohammed-amaan-hashmi-7b1019195/" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a>
-        <a class="icon-link" href="mailto:amaanhashmi25@gmail.com" aria-label="Email">ME</a>
+        <a class="icon-link" href="https://github.com/MohammedAmaanHashmi" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 6 3 12 8 18"></polyline><polyline points="16 6 21 12 16 18"></polyline><line x1="14" y1="4" x2="10" y2="20"></line></svg></a>
+        <a class="icon-link" href="https://www.linkedin.com/in/mohammed-amaan-hashmi-7b1019195/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="1.6"></circle><line x1="6" y1="11" x2="6" y2="19"></line><path d="M11 19v-5c0-2 1.5-3 3-3s3 1 3 3v5"></path><line x1="11" y1="11" x2="11" y2="19"></line></svg></a>
+        <a class="icon-link" href="mailto:amaanhashmi25@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><polyline points="3 7 12 13 21 7"></polyline></svg></a>
       </div>
+
+      <button class="menu-toggle" id="menuToggle" type="button"
+              aria-label="Open navigation menu" aria-expanded="false">
+        ☰
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#hobbies">Hobbies</a>
+      <a href="#contact">Contact</a>
     </div>
   </nav>
 
@@ -744,9 +1227,9 @@
         <div class="hero-grid">
           <div class="portrait-shell reveal">
             <div class="portrait">
-              <img src="file_0000000036687207b5207adf69e9326f.png" alt="Mohammed Amaan Hashmi">
+              <img src="profilepic.png" alt="Mohammed Amaan Hashmi">
             </div>
-            <div class="status-pill">Open to SDET opportunities</div>
+            <div class="status-pill">Open to SDET / Automation Engineer roles</div>
           </div>
 
           <div class="hero-copy reveal">
@@ -754,19 +1237,22 @@
             <h1 class="title">Hashmi</h1>
             <p class="role">Test Automation Engineer (SDET)</p>
             <p class="summary">
-              <strong>5+ years</strong> in software quality assurance and test automation for
-              <strong>US Healthcare</strong> applications. I build scalable automation with
-              <strong>Playwright, TypeScript, Selenium WebDriver, Java, and Cucumber BDD</strong>.
+              <strong>5+ years</strong> building and scaling test automation for
+              <strong>US Healthcare</strong> products at eClinicalWorks — architecting a
+              <strong>400+ file Playwright/TypeScript framework</strong>, automating
+              <strong>200+ test cases</strong>, and cutting manual regression effort by
+              <strong>45%</strong>. I turn slow, manual QA cycles into fast, reliable release pipelines.
             </p>
             <div class="button-row">
               <a class="btn btn-primary" href="#contact">Get In Touch</a>
               <a class="btn" href="#experience">View Experience</a>
+              <a class="btn" href="https://github.com/MohammedAmaanHashmi/portfolio/blob/main/Mohammed_Amaan_Hashmi_Test_Automation_Engineer_Resume.pdf" target="_blank" rel="noopener">View Resume</a>
             </div>
             <div class="social-row">
-              <a class="icon-link" href="https://www.linkedin.com/in/mohammed-amaan-hashmi-7b1019195/" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a>
-              <a class="icon-link" href="https://github.com/MohammedAmaanHashmi" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
-              <a class="icon-link" href="mailto:amaanhashmi25@gmail.com" aria-label="Email">ME</a>
-              <span class="location">Mumbai, India</span>
+              <a class="icon-link" href="https://www.linkedin.com/in/mohammed-amaan-hashmi-7b1019195/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="1.6"></circle><line x1="6" y1="11" x2="6" y2="19"></line><path d="M11 19v-5c0-2 1.5-3 3-3s3 1 3 3v5"></path><line x1="11" y1="11" x2="11" y2="19"></line></svg></a>
+              <a class="icon-link" href="https://github.com/MohammedAmaanHashmi" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 6 3 12 8 18"></polyline><polyline points="16 6 21 12 16 18"></polyline><line x1="14" y1="4" x2="10" y2="20"></line></svg></a>
+              <a class="icon-link" href="mailto:amaanhashmi25@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><polyline points="3 7 12 13 21 7"></polyline></svg></a>
+              <span class="location">Mumbai, India · IST (UTC+5:30) · Open to remote / international roles</span>
             </div>
           </div>
 
@@ -775,7 +1261,7 @@
               <span class="dot red"></span>
               <span class="dot yellow"></span>
               <span class="dot green"></span>
-              <span class="terminal-title">amaan@sdet:~$</span>
+              <span class="terminal-title"></span>
             </div>
             <div class="terminal-body">
               <p>npm install quality-engineering</p>
@@ -799,20 +1285,23 @@
         <div class="about-grid">
           <article class="profile-card reveal">
             <div class="mini-profile">
-              <img src="file_0000000036687207b5207adf69e9326f.png" alt="Mohammed Amaan Hashmi">
+              <img src="profilepic.png" alt="Mohammed Amaan Hashmi">
               <div>
                 <h2>Mohammed Amaan Hashmi</h2>
                 <p>Test Automation Engineer / SDET</p>
               </div>
             </div>
             <p>
-              I specialize in automation framework design, API testing, regression testing,
-              CI/CD, defect management, and Agile/Scrum delivery for healthcare product teams.
+              I'm a Test Automation Engineer who owns quality end-to-end for US Healthcare product
+              teams — from framework architecture and API testing to CI/CD pipelines and release
+              sign-off. As primary pull request reviewer on a 400+ file Playwright suite, I set the
+              bar for code quality across the automation codebase.
             </p>
             <p>
-              My recent work includes Playwright and TypeScript automation across a large test
-              framework, Selenium and Cucumber BDD regression suites, and reliable reporting
-              pipelines with Maven, TestNG, Jenkins, Docker, GitHub, and JIRA.
+              Recent work spans Playwright + TypeScript automation at scale, Selenium/Cucumber BDD
+              regression suites, and dependable CI reporting with Maven, TestNG, Jenkins, Docker,
+              GitHub, and JIRA — plus using AI tooling (Codex, MCP servers) to ship automation faster
+              without cutting corners on review discipline.
             </p>
             <div class="metrics">
               <div class="metric-card"><strong>5+</strong><span>Years Experience</span></div>
@@ -833,11 +1322,11 @@
             </article>
             <article class="info-card reveal">
               <h3>DevOps Integration</h3>
-              <p>CI/CD workflows with Jenkins, Docker, Git, GitHub, Bitbucket, SourceTree, Postman, JIRA, and Confluence.</p>
+              <p>CI/CD workflows with Jenkins, Docker, Git, GitHub, Bitbucket, SourceTree, Postman, and JIRA.</p>
             </article>
             <article class="info-card reveal">
               <h3>AI-Assisted Engineering</h3>
-              <p>Uses GitHub Copilot, OpenAI Codex, Claude, Generative AI, prompt engineering, and MCP servers to speed up test generation and debugging.</p>
+              <p>Uses Codex, MCP servers, and generative AI to accelerate test generation, source-code creation, and debugging while following code-review and Git-based engineering practices.</p>
             </article>
           </div>
         </div>
@@ -876,15 +1365,15 @@
               <strong>QualityKiosk Technologies</strong>
               Mumbai, India<br>
               Sep 2020 - Dec 2022<br>
-              Client Applications
+              Insurance
             </div>
             <div>
               <h3>Software Test Engineer</h3>
               <ul>
-                <li>Developed reusable functional automation test cases using Java and Selenium WebDriver.</li>
-                <li>Executed functional, regression, smoke, and integration testing across SDLC stages.</li>
-                <li>Handled defect identification, analysis, reporting, verification, and release quality support.</li>
-                <li>Reported business-impact defects that improved prioritization and contributed to an approximately 20% reduction in production escalations.</li>
+                <li>Built reusable functional automation suites in Java and Selenium WebDriver, cutting repeat manual test effort across client releases.</li>
+                <li>Owned functional, regression, smoke, and integration testing across every SDLC stage for client-facing applications.</li>
+                <li>Drove defect identification, root-cause analysis, and release quality sign-off from triage through verification.</li>
+                <li>Surfaced business-impact defects that sharpened release prioritization, contributing to an approximately 20% reduction in production escalations.</li>
               </ul>
               <div class="tag-row">
                 <span class="tag">Java</span><span class="tag">Selenium WebDriver</span><span class="tag">Functional Testing</span><span class="tag">Regression Testing</span><span class="tag">SDLC</span>
@@ -892,6 +1381,71 @@
             </div>
           </article>
         </div>
+      </div>
+    </section>
+
+
+    <section id="achievements">
+      <div class="wrap">
+        <div class="section-kicker reveal">Recognition & Impact</div>
+        <h2 class="section-title reveal">Key Achievements</h2>
+
+        <div class="achievement-grid">
+          <article class="achievement-card reveal">
+            <span class="verified-badge">✓ Verified</span>
+            <div class="achievement-number">01</div>
+            <h3>Top Performer — Q2 2024</h3>
+            <p>
+              Recognized as a <strong>Top Performer at eClinicalWorks</strong> for strong
+              service, performance, and contribution during the second quarter of 2024.
+            </p>
+            <div class="achievement-tag">Recognition · eClinicalWorks</div>
+            <a class="view-link" href="https://github.com/MohammedAmaanHashmi/portfolio/blob/main/Top%20Performer%20%E2%80%94%20Q2%202024.png" target="_blank" rel="noopener">View Certificate ↗</a>
+          </article>
+
+          <article class="achievement-card reveal">
+            <div class="achievement-number">02</div>
+            <h3>Selenium → Playwright Migration</h3>
+            <p>
+              Contributed to the transition from <strong>Selenium with Java to Playwright
+              with TypeScript</strong>, supporting the adoption of a modern and maintainable
+              automation stack.
+            </p>
+            <div class="achievement-tag">Playwright · TypeScript</div>
+          </article>
+
+          <article class="achievement-card reveal">
+            <div class="achievement-number">03</div>
+            <h3>Playwright Framework Demo to Management</h3>
+            <p>
+              Delivered a <strong>Playwright framework demonstration to management</strong>,
+              presenting the architecture, development workflow, and benefits of the
+              modernized automation approach.
+            </p>
+            <div class="achievement-tag">Technical Leadership</div>
+          </article>
+
+          <article class="achievement-card reveal">
+            <div class="achievement-number">04</div>
+            <h3>End-to-End Team Enablement</h3>
+            <p>
+              Trained the team on the complete development workflow — from
+              <strong>creating a branch and using Codex with an MCP server to generate
+              source code</strong>, through reviewing and pushing changes, and finally
+              raising a pull request.
+            </p>
+            <div class="achievement-tag">Codex · MCP · Git</div>
+          </article>
+        </div>
+
+        <article class="ai-highlight reveal">
+          <h3>AI-Assisted Test Engineering</h3>
+          <p>
+            Apply <strong>Codex, MCP servers, and generative AI</strong> to accelerate
+            automation development and source-code generation while keeping the workflow
+            grounded in engineering practices such as code review, Git, and pull requests.
+          </p>
+        </article>
       </div>
     </section>
 
@@ -909,19 +1463,13 @@
           <article class="skill-card reveal">
             <h3>Testing</h3>
             <div class="chip-list">
-              <span class="chip">Framework Design</span><span class="chip">E2E Testing</span><span class="chip">Functional Testing</span><span class="chip">Regression Testing</span><span class="chip">Smoke Testing</span><span class="chip">Integration Testing</span><span class="chip">Cross-Browser</span><span class="chip">API Testing</span><span class="chip">REST APIs</span>
+              <span class="chip">Framework Design</span><span class="chip">E2E Testing</span><span class="chip">Functional Testing</span><span class="chip">Regression Testing</span><span class="chip">Smoke Testing</span><span class="chip">Integration Testing</span><span class="chip">Cross-Browser</span><span class="chip">API Testing</span>
             </div>
           </article>
           <article class="skill-card reveal">
-            <h3>DevOps & Tools</h3>
+            <h3>DevOps, Database & Cloud</h3>
             <div class="chip-list">
-              <span class="chip">Jenkins</span><span class="chip">Docker</span><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Bitbucket</span><span class="chip">SourceTree</span><span class="chip">Postman</span><span class="chip">JIRA</span><span class="chip">Confluence</span>
-            </div>
-          </article>
-          <article class="skill-card reveal">
-            <h3>Database & Cloud</h3>
-            <div class="chip-list">
-              <span class="chip">MySQL</span><span class="chip">AWS</span><span class="chip">Continuous Integration</span>
+              <span class="chip">Jenkins</span><span class="chip">Docker</span><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Bitbucket</span><span class="chip">SourceTree</span><span class="chip">Postman</span><span class="chip">JIRA</span><span class="chip">MySQL</span><span class="chip">AWS</span>
             </div>
           </article>
           <article class="skill-card reveal">
@@ -930,11 +1478,38 @@
               <span class="chip">Agile/Scrum</span><span class="chip">SDLC</span><span class="chip">STLC</span><span class="chip">Quality Assurance</span><span class="chip">Defect Management</span><span class="chip">Root Cause Analysis</span><span class="chip">Code Reviews</span>
             </div>
           </article>
-          <article class="skill-card reveal">
-            <h3>Certifications</h3>
-            <div class="chip-list">
-              <span class="chip">ISTQB CTFL</span><span class="chip">ISTQB Agile Tester</span><span class="chip">English</span><span class="chip">Hindi</span><span class="chip">Marathi</span>
-            </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <div class="wrap">
+        <div class="section-kicker reveal">Verified credentials</div>
+        <h2 class="section-title reveal">Certifications</h2>
+        <div class="achievement-grid">
+          <article class="achievement-card cert-card reveal">
+            <span class="verified-badge">✓ Verified</span>
+            <div class="achievement-number">01</div>
+            <h3>ISTQB® Certified Tester Foundation Level</h3>
+            <p>
+              Foundational certification from the <strong>International Software Testing
+              Qualifications Board</strong> covering core testing principles, techniques,
+              and the software test lifecycle.
+            </p>
+            <div class="achievement-tag">ISTQB · Foundation Level</div>
+            <a class="view-link" href="https://github.com/MohammedAmaanHashmi/portfolio/blob/main/ISTQB_Certified_Tester_Foundation_Level.pdf" target="_blank" rel="noopener">View Certificate ↗</a>
+          </article>
+
+          <article class="achievement-card cert-card reveal">
+            <span class="verified-badge">✓ Verified</span>
+            <div class="achievement-number">02</div>
+            <h3>ISTQB® Agile Tester</h3>
+            <p>
+              Certification validating testing skills, roles, and techniques applied
+              within <strong>Agile software development</strong> teams.
+            </p>
+            <div class="achievement-tag">ISTQB · Agile Tester</div>
+            <a class="view-link" href="https://github.com/MohammedAmaanHashmi/portfolio/blob/main/ISTQB_Agile_Tester_Certification.pdf" target="_blank" rel="noopener">View Certificate ↗</a>
           </article>
         </div>
       </div>
@@ -944,27 +1519,11 @@
       <div class="wrap">
         <div class="section-kicker reveal">Beyond the code</div>
         <h2 class="section-title reveal">Hobbies & Interests</h2>
-        <div class="hobby-grid">
-          <article class="hobby-card reveal">
-            <div class="hobby-icon">&#127909;</div>
-            <h3>Cinema & Movies</h3>
-            <p>Enjoy watching films across a broad range of genres, always up for exploring something new on screen.</p>
-          </article>
-          <article class="hobby-card reveal">
-            <div class="hobby-icon">&#127925;</div>
-            <h3>Music</h3>
-            <p>Listen to music regularly as a way to unwind and stay focused through long stretches of work.</p>
-          </article>
-          <article class="hobby-card reveal">
-            <div class="hobby-icon">&#128009;</div>
-            <h3>Anime</h3>
-            <p>Follows anime series, with Dragon Ball among the favorites.</p>
-          </article>
-          <article class="hobby-card reveal">
-            <div class="hobby-icon">&#128250;</div>
-            <h3>K-Dramas & Reality TV</h3>
-            <p>Keeps up with K-dramas and reality TV shows for a mix of storytelling and unscripted entertainment.</p>
-          </article>
+        <div class="hobby-strip reveal">
+          <span class="hobby-pill"><span class="hobby-icon">&#127909;</span><span class="label">Cinema & Movies</span></span>
+          <span class="hobby-pill"><span class="hobby-icon">&#127925;</span><span class="label">Music</span></span>
+          <span class="hobby-pill"><span class="hobby-icon">&#128009;</span><span class="label">Anime</span></span>
+          <span class="hobby-pill"><span class="hobby-icon">&#128250;</span><span class="label">K-Dramas & Reality TV</span></span>
         </div>
       </div>
     </section>
@@ -974,8 +1533,8 @@
         <article class="contact-card reveal">
           <h2>Let's build reliable automation</h2>
           <p>
-            Open to Test Automation Engineer and SDET opportunities focused on scalable frameworks,
-            CI feedback, healthcare workflows, and high-confidence releases.
+            Open to Test Automation Engineer and SDET opportunities focused on scalable automation,
+            Playwright/TypeScript, AI-assisted engineering, CI feedback, and high-confidence releases.
           </p>
           <div class="button-row" style="justify-content:center;margin-bottom:0">
             <a class="btn btn-primary" href="mailto:amaanhashmi25@gmail.com">Email Me</a>
@@ -983,16 +1542,52 @@
             <a class="btn" href="https://www.linkedin.com/in/mohammed-amaan-hashmi-7b1019195/" target="_blank" rel="noopener">LinkedIn</a>
             <a class="btn" href="https://github.com/MohammedAmaanHashmi" target="_blank" rel="noopener">GitHub</a>
           </div>
+          <div class="availability-strip">
+            <span class="availability-pill">📍 <strong>Mumbai, India</strong></span>
+            <span class="availability-pill">🕒 <strong>IST · UTC+5:30</strong></span>
+            <span class="availability-pill">🌍 <strong>Open to remote & international roles</strong></span>
+          </div>
         </article>
       </div>
     </section>
   </main>
 
   <footer>
-    Mumbai, India | amaanhashmi25@gmail.com | +91 98678 21170
+    <div class="wrap">
+      <div class="footer-brand">Mohammed Amaan Hashmi</div>
+      <div class="footer-links">
+        <a class="icon-link" href="https://github.com/MohammedAmaanHashmi" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 6 3 12 8 18"></polyline><polyline points="16 6 21 12 16 18"></polyline><line x1="14" y1="4" x2="10" y2="20"></line></svg></a>
+        <a class="icon-link" href="https://www.linkedin.com/in/mohammed-amaan-hashmi-7b1019195/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="1.6"></circle><line x1="6" y1="11" x2="6" y2="19"></line><path d="M11 19v-5c0-2 1.5-3 3-3s3 1 3 3v5"></path><line x1="11" y1="11" x2="11" y2="19"></line></svg></a>
+        <a class="icon-link" href="mailto:amaanhashmi25@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><polyline points="3 7 12 13 21 7"></polyline></svg></a>
+      </div>
+      <div class="footer-meta">Mumbai, India · amaanhashmi25@gmail.com · +91 98678 21170</div>
+    </div>
   </footer>
 
+  <button class="back-to-top" id="backToTop" aria-label="Back to top" type="button">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+  </button>
+
   <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+      menuToggle.textContent = isOpen ? "×" : "☰";
+    });
+
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+        menuToggle.textContent = "☰";
+      });
+    });
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) entry.target.classList.add("visible");
@@ -1000,6 +1595,45 @@
     }, { threshold: 0.14 });
 
     document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+
+    // Scroll progress bar
+    const scrollProgress = document.getElementById("scrollProgress");
+    const backToTop = document.getElementById("backToTop");
+
+    function onScroll() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      scrollProgress.style.width = pct + "%";
+      backToTop.classList.toggle("show", scrollTop > 500);
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // Active nav link on scroll (scroll-spy)
+    const navAnchors = Array.from(document.querySelectorAll(".nav-links a"));
+    const spyTargets = navAnchors
+      .map((a) => document.querySelector(a.getAttribute("href")))
+      .filter(Boolean);
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const id = "#" + entry.target.id;
+        const link = navAnchors.find((a) => a.getAttribute("href") === id);
+        if (!link) return;
+        if (entry.isIntersecting) {
+          navAnchors.forEach((a) => a.classList.remove("active"));
+          link.classList.add("active");
+        }
+      });
+    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+
+    spyTargets.forEach((section) => navObserver.observe(section));
   </script>
 </body>
 </html>
